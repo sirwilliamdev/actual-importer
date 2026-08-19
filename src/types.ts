@@ -11,4 +11,5 @@ export interface Config {
   password: string;
   budgetId: string; // groupId / syncId (used for downloadBudget)
   defaultAccountId: string; // account UUID or name
+  allowSelfSignedCert?: boolean; // opt in only when serverURL has an untrusted cert
 }

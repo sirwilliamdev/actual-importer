@@ -1,6 +1,3 @@
-// Self-signed certs are common on local Actual Budget instances
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
 import * as api from "@actual-app/api";
 import { mkdirSync } from "fs";
 import type { Transaction, Config } from "./types.js";
@@ -10,6 +7,15 @@ export async function importTransactions(
   accountArg: string,
   transactions: Transaction[]
 ): Promise<void> {
+  // Disabling cert verification is process-wide, so it stays opt-in: prefer a
+  // serverURL with a trusted cert over turning this on.
+  if (config.allowSelfSignedCert) {
+    console.warn(
+      "WARNING: allowSelfSignedCert is enabled — TLS certificate verification is disabled for this process."
+    );
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  }
+
   mkdirSync(".actual-cache", { recursive: true });
   await api.init({
     serverURL: config.serverURL,
