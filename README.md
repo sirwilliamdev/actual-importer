@@ -6,6 +6,7 @@ This package provides the common logic used by bank-specific importers:
 
 - [actual-importer-bbva](https://github.com/sirwilliamdev/actual-importer-bbva) — BBVA Spain (Excel)
 - [actual-importer-traderepublic](https://github.com/sirwilliamdev/actual-importer-traderepublic) — TradeRepublic (CSV)
+- [actual-importer-imagin](https://github.com/sirwilliamdev/actual-importer-imagin) — imagin / CaixaBank (CSV)
 
 ## What's included
 
